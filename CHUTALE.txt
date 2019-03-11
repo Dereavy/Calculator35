@@ -1,0 +1,44 @@
+1->A~Z:63->A:63->B:Cls
+AxesOff:LabelOff
+Norm1
+Text 5,5,"Animation?"
+Text 13,15,"Oui"
+Text 20,15,"Non (Plus rapide)"
+While Z<>31
+Getkey->Z
+If Z=28
+Then
+Text 13,5,"->":1->S
+Text 20,5,"  "
+IfEnd
+If Z=37
+Then
+Text 20,5,"->":20->S
+Text 13,5,"  "
+IfEnd
+WhileEnd
+ViewWindow 0,127,1,0,63,1
+128->Dim List 1
+For 1->I To 128
+1->List 1[I]
+Next
+Lbl 0
+For 1->C To 40+S
+Lbl 2
+2(Int 3Ran#)-2->R
+R=0=>Goto 2
+S=1=>PlotChg A,B
+A+R->A
+S=1=>B-2->B:C+1->C
+S=20=>B-1->B
+S=1=>PlotOn A,B
+Next
+0->C
+List 1[A]+1->List 1[A]:PlotOn A,List 1[A]
+63->A:63->B
+If List 1[A]>20 And S=1
+Then
+For 1->I To 128
+Int (List 1[I]/10)->List 1[I]
+IfEnd
+Goto 0

@@ -1,0 +1,140 @@
+Cls:ClrGraph
+0->A~Z:0->\r:0->\th
+Locate 8,4,"WELCOME"
+Locate 1,7,"AK"_
+ClrText
+Lbl Z
+ViewWindow 1,127,0,1,63,0:0->A~Z
+LabelOff
+Vertical 1:Vertical 2:Vertical 22:Vertical 43:Vertical 63:Vertical 64:Vertical 127:Vertical 126:Horizontal 22:Horizontal 43:Horizontal 63:Horizontal 62:Horizontal 1
+Horizontal 2
+Lbl 0
+If A=0
+Then
+1->A
+Else 0->A
+IfEnd
+Text 10,70,"Player1:"
+Text 30,70,"Player2:"
+Lbl A
+B=9=>Goto C
+Getkey->Z
+Z=72=>Goto 1
+Z=62=>Goto 2
+Z=52=>Goto 3
+Z=73=>Goto 4
+Z=63=>Goto 5
+Z=53=>Goto 6
+Z=74=>Goto 7
+Z=64=>Goto 8
+Z=54=>Goto 9
+Z=78=>Goto Z
+Goto A
+Lbl B
+Lbl 1
+B+1->B
+If A=1
+Then
+Text 50,10,"X"
+Goto 0
+Else
+Text 50,10,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 2
+B+1->B
+If A=1
+Then
+Text 50,30,"X"
+Goto 0
+Else
+Text 50,30,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 3
+B+1->B
+If A=1
+Then
+Text 50,50,"X"
+Goto 0
+Else
+Text 50,50,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 4
+B+1->B
+If A=1
+Then
+Text 30,10,"X"
+Goto 0
+Else
+Text 30,10,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 5
+B+1->B
+If A=1
+Then
+Text 30,30,"X"
+Goto 0
+Else
+Text 30,30,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 6
+B+1->B
+If A=1
+Then
+Text 30,50,"X"
+Goto 0
+Else
+Text 30,50,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 7
+B+1->B
+If A=1
+Then
+Text 10,10,"X"
+Goto 0
+Else
+Text 10,10,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 8
+B+1->B
+If A=1
+Then
+Text 10,30,"X"
+Goto 0
+Else
+Text 10,30,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl 9
+B+1->B
+If A=1
+Then
+Text 10,50,"X"
+Goto 0
+Else
+Text 10,50,"0"
+Goto 0
+IfEnd
+Goto A
+Lbl C
+0->B
+0->A
+0->C
+Do
+C+1->C
+LpWhile C<>1000
+Goto Z

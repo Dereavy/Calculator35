@@ -1,0 +1,128 @@
+Norm1
+0->A~Z:AxesOff:GridOff:LabelOff:CoordOff
+Lbl 0:400->B
+ViewWindow 0,127,1,0,63,1:Text 1,8,"Mars"
+Text 1,28,"Attack":1->T
+Text 1,100,"Score"
+F-Line 55,63,25,10
+F-Line 60,63,45,10
+F-Line 65,63,65,10
+F-Line 70,63,85,10
+F-Line 75,63,105,10
+F-Line 25,10,105,10
+Text 58,8,"Play"
+For 25->A To 105 Step 20:F-Line A,10,A,1
+Text 50,A+7,"  "
+Text 57,A+4,"F":Text 57,A+8,(A-25)/20+2
+Next
+Text 57,A+4," Q"
+For 1->A To 124 Step 122:F-Line A,1,A,63
+F-Line A,1,A+2,1
+F-Line A+2,1,A+2,63
+F-Line A+2,63,A,63
+Next
+F-Line 2,1,2,63
+For 1->C To 4
+1->Dim List C
+1->List C[1]
+Next
+For 5->C To 8
+4->Dim List C
+55->List C[1]
+35->List C[2]
+25->List C[3]
+10->List C[4]
+Next
+While Z<>79
+Getkey->Z:Z=29=>Goto 9
+WhileEnd
+Text 58,8,"    "
+For 25->A To 85 Step 20:Text 57,A+4,"  "
+Next
+Int (B/62)->A:1->L
+While T<B
+T+1->T
+If T=A
+Then
+PlotOff 2,62-Int (A/Int (B/62)-1):60-Int (A/(B/62))<=10=>Text 7,9,"  ":60-Int (A/(B/629))>=0=>Text 7,9,60-Int (A/(B/62))
+A+Int (B/62)->A
+IfEnd
+Getkey->Z:Z=29=>Goto 9
+5-(Int (Z/10)-2)->L
+If L<5 And L>0
+Then
+Text 50,(14+(L*20)),"#E69C":Text 50,(12+(L*20)),"  "
+IfEnd
+If N<4
+Then
+(Int 4Ran#)+1->R
+R=1=>1->Q:R=2=>2->P:R=3=>3->U:R=4=>4->V
+4+R->F:List R[1]->E
+If Q=1
+Then
+E-1>=1=>PlotOff Int (22*((List F[E-1]+1635/22))%53),List F[E-1]
+PlotOn Int (22*((List F[E]+1635/22))%53),List F[E]
+E>3=>PlotOff Int (22*((List F[E]+1635/22))%53),List F[E]
+List 1[1]+1->List 1[1]
+IfEnd
+If P=2
+Then
+E-1>=1=>PlotOff Int (8*((List F[E-1])+2835/8))%53,List F[E-1]
+PlotOn Int (8*((List F[E])+2835/8))%53,List F[E]
+E>3=>PlotOff Int (8*((List F[E])+2835/8))%53,List F[E]
+List 2[1]+1->List 2[1]
+IfEnd
+If U=3
+Then
+E-1>=1=>PlotOff Int (8*((List F[E-1]-4055/8)))%(-53),List F[E-1]
+PlotOn Int (8*((List F[E]-4055/8)))%(-53),List F[E]
+Text 15,10,Int (8*((List F[E]-4055/8)))%(-53)
+E>3=>PlotOff Int (8*((List F[E]-4055/8)))%(-53),List F[E]
+List 3[1]+1->List 3[1]
+IfEnd
+If V=4
+Then
+E-1>=1=>PlotOff Int (22*((List F[E-1])-5255/22))%(-53),List F[E-1]
+PlotOn Int (22*((List F[E])-5255/22))%(-53),List F[E]
+E>3=>PlotOff Int (22*((List F[E])-5255/22))%(-53),List F[E]
+List 4[1]+1->List 4[1]
+IfEnd
+0->U:0->V:0->P:0->Q
+If List R[1]>4
+Then
+R=V=>0->V:R=U=>0->U
+R=Q=>0->Q:R=P=>0->P
+1->List R[1]
+For 1->C To 4
+Text 57,9+20*R," 0"
+Getkey->Z
+If 5-(Int (Z/10)-2)=R:Then
+S+1->S:5->C:1->W
+Text 8,100,S
+Text 57,9+20*R," X"
+PlotOn 124,S+1
+IfEnd
+Next
+If C=4
+Then S-1->S
+For 1->C To 3
+Text 57,10+20*R," \num!\num"
+Next
+-1->W
+IfEnd
+Text 7,28,"  "
+Text 7,28,K
+D+20W->D:K+W->K
+K<0=>Text 7,20,"#E693"
+K=0=>Text 7,20,"  "
+K>0=>Text 7,20,"#E692"
+Text 57,9+20*R,"  "
+N-1->N
+IfEnd
+IfEnd
+WhileEnd_
+Cls:Text 30,40,"Score:":Text 30,68,S_
+Lbl 9
+Prog "RESET"
+Stop
+ALEX

@@ -1,0 +1,78 @@
+Prog "RESET"
+Lbl 0
+0->A~Z:ClrList1
+ViewWindow 0,127,1,0,63,1:10->A:Cls
+While J=0
+Text 10,20,"F1 Single player"
+Text 30,20,"F2 Multi player"
+Getkey->Z
+Z=79=>1->J:Z=69=>2->J
+WhileEnd:Cls
+If J=1
+Then
+For 1->O To 60
+Text Int 50Ran#+2,Int 120Ran#+2,"#E6A6"
+Next
+Text 30,107," ==":0->O:IfEnd
+SketchBrokenVertical 127:3->N:2->M
+Vertical 126
+SketchBrokenHorizontal 63
+Horizontal 62
+A->E:32->B:B->F:117->G
+G->K:32->H:H->L
+While T=0 And S=0
+PxlOn B,A:PxlOn L,K
+Getkey->Z:Getkey->Y
+Z=28=>1->N:Z=27=>2->N
+Z=38=>3->N:Z=37=>4->N
+Y=68=>1->M:Y=57=>2->M
+Y=77=>3->M:Y=66=>4->M
+J=1=>Goto 1
+If M=1
+Then
+PxlTest(B-1,A)->T
+B-1->B:IfEnd
+If M=2
+Then
+PxlTest(B,A+1)->T
+A+1->A:IfEnd
+If M=3
+Then
+PxlTest(B,A-1)->T
+A-1->A:IfEnd
+If M=4
+Then
+PxlTest(B+1,A)->T
+B+1->B:IfEnd
+Lbl 1
+If N=1
+Then
+PxlTest(L-1,K)->S
+L-1->L
+IfEnd
+If N=2
+Then
+PxlTest(L,K+1)->S
+K+1->K:IfEnd
+If N=3
+Then
+PxlTest(L,K-1)->S
+K-1->K:IfEnd
+If N=4
+Then
+PxlTest(L+1,K)->S
+L+1->L:IfEnd
+I+1->I:O+1->O
+If 0=20
+Then
+IfEnd
+WhileEnd
+If S=1 And T=1
+Then
+"Egalite":Goto 2
+IfEnd:Cls:ClrText
+S=1=>"Player 1 WINS"
+T=1=>"Player 2 WINS"
+Lbl 2
+"Score Unijoueur":I_
+Goto 0

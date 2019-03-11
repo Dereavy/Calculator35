@@ -1,0 +1,112 @@
+Cls:ClrGraph:AxesOff:CoordOff:LabelOff:0->A~Z:0->\r:1->\th:0->Z
+Locate 8,4,"WELCOME"
+Locate 1,7,"AK"_
+ClrText
+ViewWindow 1,127,0,1,63,0:RclPict 1:2->B
+56->A
+Text 30,41,"  PLAY"
+Text 40,41,"  RETURN":Text 58,115,"AK"
+Lbl 1
+Getkey->Z
+If Z=28
+Then
+Text 40,41,"  RETURN":Text 30,43,"->PLAY"
+1->A
+IfEnd
+If Z=37
+Then
+Text 30,41,"  PLAY"
+Text 40,43,"->RETURN"
+2->A
+IfEnd
+If Z=27
+Then
+A+10->A:PlotChg A,B
+PlotChg A,B+1
+PlotChg A,B+2
+For 1->C To 5
+PlotChg A+C,B
+PlotChg A+C,B+1
+PlotChg A+C,B+2
+Next
+PlotChg A+3,B+3
+PlotChg A+3,B+4
+IfEnd
+If Z=31
+Then
+If A=1
+Then
+0->A
+Cls
+Goto 2
+IfEnd
+If A=2
+Then
+Prog "RESET"
+Stop
+IfEnd
+IfEnd
+If Z=38
+Then
+A-10->A
+For 1->C To 5
+PlotChg A+C,B+2
+PlotChg A+C,B+1
+PlotChg A+C,B
+Next
+PlotChg A,B
+PlotChg A,B+1
+PlotChg A,B+2
+PlotChg A+3,B+3
+PlotChg A+3,B+4
+IfEnd
+Goto 1
+B+5->\r
+Lbl 2
+F-Line A,B,A+5,B
+F-Line A,B+1,A+5,B+1
+F-Line A,B+2,A+5,B+2
+F-Line A+3,B+3,A+3,B+4
+A>105=>10->A
+A<10=>102->A
+If \th=1
+Then Cls:0->\th
+IfEnd
+RclPict 2
+Getkey->Z
+If Z=27
+Then
+A+4->A:1->\th
+If A>105
+Then 10->A
+IfEnd
+Goto 2
+IfEnd
+If Z=38
+Then
+A-4->A:1->\th
+If A<10
+Then 105->A
+IfEnd
+Goto 2
+IfEnd
+Z=78=>1->U
+If U=1
+Then
+PlotOn A+3,\r+2
+\r+2->\r
+If \r>B+8
+Then
+PlotOff A+3,\r-2
+PlotOff A+3,\r-3
+If \r>=66
+Then
+B+5->\r
+0->U
+IfEnd
+Goto 2
+IfEnd
+IfEnd
+Goto 2
+Prog "RESET"
+Stop

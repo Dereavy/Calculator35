@@ -1,0 +1,21 @@
+Cls:AxesOff
+While C<>101
+Text 30,40,H
+Text 30,50,":"
+Text 30,55,M
+Text 30,65,":"
+Text 30,70,S
+If M=60
+Then
+H+1->H
+0->M
+Text 30,55,"  "
+IfEnd
+If S=60
+Then
+M+1->M:0->S
+Text 30,70,"  "
+IfEnd
+S+1->S
+WhileEnd
+AxesOn
